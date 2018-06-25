@@ -18,6 +18,7 @@ function mapUid(str) {
 
 //read only this tags
 const arrayTags = [
+  "x00080018",
   "x30060016",
   "x30060039",
   "x30060040",
@@ -25,7 +26,12 @@ const arrayTags = [
   "x30060046",
   "x30060050",
   "x00081150",
-  "x00081155"
+  "x00081155",
+
+  "x00200032",
+  "x00200037",
+  "x00280030",
+  "x00180050"
 ];
 
 // This function iterates through dataSet recursively and adds new tag
@@ -41,18 +47,18 @@ export function dumpDataSet(dataSet, output) {
   function stringToTripleArray(str) {
     let arrayCoord = str.replace(/['"]/g, "").split("\\");
     let coords = [];
-    let trinityCoords = [];
+    let tripleCoords = [];
     let i = 0;
     arrayCoord.forEach(el => {
       i++;
       coords.push(parseFloat(el));
       if (i === 3) {
-        trinityCoords.push(coords);
+        tripleCoords.push(coords);
         i = 0;
         coords = [];
       }
     });
-    return trinityCoords;
+    return tripleCoords;
   }
 
   try {
